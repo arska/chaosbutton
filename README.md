@@ -16,3 +16,7 @@ kubectl config set-credentials appuio --token='kjhbmjhvbnbvnbv' # get a valid to
 kubectl config set-context appuio --cluster=appuio --user=appuio
 kubectl config use-context appuio
 python3 app.py
+
+# To install the systemd service to start at boot
+sudo systemctl daemon-reload
+sudo systemctl enable sample.service

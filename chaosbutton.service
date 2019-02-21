@@ -1,0 +1,10 @@
+ [Unit]
+ Description=Chaosbutton serviice
+ After=multi-user.target
+
+ [Service]
+ Type=idle
+ ExecStart=/usr/bin/python3 /root/chaosbutton/app.py
+
+ [Install]
+ WantedBy=multi-user.target
