@@ -6,7 +6,7 @@ import RPi.GPIO as GPIO
 
 namespace='appuio-salesdemo1'
 selector='app=static-go'
-channel=2
+channel=22
 
 # Configs can be set in Configuration class directly or using helper utility
 config.load_kube_config()
