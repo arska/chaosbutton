@@ -6,7 +6,7 @@ import RPi.GPIO as GPIO
 
 namespace='appuio-salesdemo1'
 selector='app=static-go'
-channel=22
+channel=15 # pin 15 on the header, pin 17 next to it is 3.3v
 
 # Configs can be set in Configuration class directly or using helper utility
 config.load_kube_config()
@@ -28,4 +28,7 @@ def my_callback():
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(channel, GPIO.RISING, callback=my_callback, bouncetime=200)
+
+while True:
+    pass
 
