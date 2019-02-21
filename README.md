@@ -18,5 +18,6 @@ kubectl config use-context appuio
 python3 app.py
 
 # To install the systemd service to start at boot
+cp chaosbutton.service /lib/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable sample.service
+sudo systemctl enable chaosbutton.service
