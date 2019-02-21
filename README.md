@@ -12,7 +12,7 @@ pip3 install RPi.GPIO kubernetes
 git clone https://github.com/arska/chaosbutton.git
 cd chaosbutton
 kubectl config set-cluster appuio --server='https://console.appuio.ch'
-kubectl config set-credentials appuio --username='myusername' --password='mypassword'
+kubectl config set-credentials appuio --token='kjhbmjhvbnbvnbv' # get a valid token e.g. from the openshift web gui top right -> copy logiin command
 kubectl config set-context appuio --cluster=appuio --user=appuio
 kubectl config use-context appuio
-python3 app.py 
+python3 app.py

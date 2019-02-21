@@ -27,7 +27,7 @@ def my_callback(channel):
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.add_event_detect(channel, GPIO.RISING, callback=my_callback, bouncetime=200)
+GPIO.add_event_detect(channel, GPIO.RISING, callback=chaos, bouncetime=200)
 
 while True:
     pass
