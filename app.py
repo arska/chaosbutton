@@ -12,7 +12,7 @@ channel=15 # pin 15 on the header, pin 17 next to it is 3.3v
 config.load_kube_config()
 v1 = client.CoreV1Api()
 
-def chaos():
+def chaos(channel):
     pods = v1.list_namespaced_pod(namespace=namespace, label_selector=selector)
     #for pod in pods.items:
     #    print("%s\t%s\t%s" % (pod.metadata.name,
@@ -22,7 +22,7 @@ def chaos():
     print("killing {0}".format(podname))
     v1.delete_namespaced_pod(podname, namespace, client.V1DeleteOptions(grace_period_seconds=0))
 
-def my_callback():
+def my_callback(channel):
     print("called")
 
 GPIO.setmode(GPIO.BOARD)
