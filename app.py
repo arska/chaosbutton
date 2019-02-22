@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.DEBUG, format=LOGFORMAT)
 namespace='appuio-salesdemo1'
 selector='app=static-go'
 channel=15 # pin 15 on the header, pin 17 next to it is 3.3v
-maxparallel=5
+maxparallel=10
 
 # Configs can be set in Configuration class directly or using helper utility
 config.load_kube_config()
