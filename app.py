@@ -31,6 +31,8 @@ def chaos(channel):
 def newthread(channel):
     if threading.active_count() < maxparallel:
         threading.Thread(target=chaos, args=(channel,)).start()
+    else:
+        logging.info("not starting new thread since already more than {0} running".format(maxparrallel))
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
