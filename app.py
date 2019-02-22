@@ -3,6 +3,11 @@ from pprint import pprint
 import random
 import os
 import RPi.GPIO as GPIO
+import logging
+import threading
+
+LOGFORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+logging.basicConfig(level=logging.DEBUG, format=LOGFORMAT)
 
 namespace='appuio-salesdemo1'
 selector='app=static-go'
@@ -19,15 +24,15 @@ def chaos(channel):
     #                          pod.status.phase,
     #                          pod.spec.node_name))
     podname = random.choice(pods.items).metadata.name
-    print("killing {0}".format(podname))
+    logging.debug("killing {0}".format(podname))
     v1.delete_namespaced_pod(podname, namespace, client.V1DeleteOptions(grace_period_seconds=0))
 
-def my_callback(channel):
-    print("called")
+def newthread(channel):
+    threading.Thread(target=chaos,k args=(channel,)).start()
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.add_event_detect(channel, GPIO.RISING, callback=chaos, bouncetime=200)
+GPIO.add_event_detect(channel, GPIO.RISING, callback=newthread, bouncetime=200)
 
 while True:
     pass
