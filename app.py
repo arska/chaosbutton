@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO, format=LOGFORMAT)
 namespace='appuio-salesdemo1'
 selector='app=static-go'
 channel=15 # pin 15 on the header, pin 17 next to it is 3.3v
-maxparallel=10
+maxparallel=15
 
 # Configs can be set in Configuration class directly or using helper utility
 config.load_kube_config()
@@ -25,7 +25,7 @@ def chaos(channel):
     #                          pod.status.phase,
     #                          pod.spec.node_name))
     podname = random.choice(pods.items).metadata.name
-    logging.debug("killing {0}".format(podname))
+    logging.info("killing {0}".format(podname))
     api.delete_namespaced_pod(podname, namespace, client.V1DeleteOptions(grace_period_seconds=0))
 
 def newthread(channel):
