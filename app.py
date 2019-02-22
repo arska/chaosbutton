@@ -12,6 +12,7 @@ logging.basicConfig(level=logging.DEBUG, format=LOGFORMAT)
 namespace='appuio-salesdemo1'
 selector='app=static-go'
 channel=15 # pin 15 on the header, pin 17 next to it is 3.3v
+maxparallel=5
 
 # Configs can be set in Configuration class directly or using helper utility
 config.load_kube_config()
@@ -28,7 +29,8 @@ def chaos(channel):
     v1.delete_namespaced_pod(podname, namespace, client.V1DeleteOptions(grace_period_seconds=0))
 
 def newthread(channel):
-    threading.Thread(target=chaos, args=(channel,)).start()
+    if threading.active_count() < maxparallel:
+        threading.Thread(target=chaos, args=(channel,)).start()
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
