@@ -28,7 +28,7 @@ def chaos(channel):
     v1.delete_namespaced_pod(podname, namespace, client.V1DeleteOptions(grace_period_seconds=0))
 
 def newthread(channel):
-    threading.Thread(target=chaos,k args=(channel,)).start()
+    threading.Thread(target=chaos, args=(channel,)).start()
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
