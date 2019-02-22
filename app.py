@@ -7,7 +7,7 @@ import logging
 import threading
 
 LOGFORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-logging.basicConfig(level=logging.DEBUG, format=LOGFORMAT)
+logging.basicConfig(level=logging.INFO, format=LOGFORMAT)
 
 namespace='appuio-salesdemo1'
 selector='app=static-go'
@@ -16,17 +16,17 @@ maxparallel=10
 
 # Configs can be set in Configuration class directly or using helper utility
 config.load_kube_config()
-v1 = client.CoreV1Api()
+api = client.CoreV1Api()
 
 def chaos(channel):
-    pods = v1.list_namespaced_pod(namespace=namespace, label_selector=selector)
+    pods = api.list_namespaced_pod(namespace=namespace, label_selector=selector)
     #for pod in pods.items:
     #    print("%s\t%s\t%s" % (pod.metadata.name,
     #                          pod.status.phase,
     #                          pod.spec.node_name))
     podname = random.choice(pods.items).metadata.name
     logging.debug("killing {0}".format(podname))
-    v1.delete_namespaced_pod(podname, namespace, client.V1DeleteOptions(grace_period_seconds=0))
+    api.delete_namespaced_pod(podname, namespace, client.V1DeleteOptions(grace_period_seconds=0))
 
 def newthread(channel):
     if threading.active_count() < maxparallel:
