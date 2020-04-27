@@ -1,6 +1,8 @@
 # Chaosbutton
 ![Chaosbutton in action](images/chaosbutton.jpg)
-A large red button connected to a Raspbeery Pi bringing chaoos and mayhem to your kubernetes-based service by killing a pod by random
+
+A large red button connected to a Raspberry Pi bringing chaos and mayhem to your
+ kubernetes-based service by killing a pod by random
 
 ## How to create an OpenShift service account with a token that does not expire
 ```
@@ -34,11 +36,15 @@ sudo systemctl enable chaosbutton.service
 
 # How to I configure which pod gets killed?
 See "namespace" and "selector" constants in app.py.
+
 namespace: the Kubernetes namespace (orr OpenShift project) name you want to operate in
-selector: is the label=value by which the pods to be killed are filtered and from which one is selected by random
+
+selector: is the `label=value` from which one pod is selected by random, used as a
+ filter to query the Kubernetes API
 
 # How do I build the Button and the Raspberry pi?
 I ordered my button locally in Switzerland from https://www.bastelgarage.ch/buzzer-taster-rot because it was the cheapest delivered to me.
-By default this application uses pin 15 (see "channel" in app.py) on the raspberry pi IO header because pin 17 next to it has +3.3v power. connecting these to pins using the button is detected in this application.
 
-
+By default this application uses pin 15 (see "channel" in app.py) on the raspberry pi
+ IO header because pin 17 next to it has +3.3v power. connecting these to pins
+  together using the button is used as a trigger to kill one pod.
