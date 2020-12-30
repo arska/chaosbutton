@@ -7,6 +7,7 @@ A large red button connected to a Raspberry Pi bringing chaos and mayhem to your
 ## How to create an OpenShift service account with a token that does not expire
 ```
 oc create sa chaosbutton
+oc policy add-role-to-user edit -z chaosbutton
 oc describe sa chaosbutton | grep "Tokens:"
 # get the secret name of the "Token"
 oc describe secret chaosbutton-token-asd42 | grep "token:"
