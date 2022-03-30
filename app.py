@@ -9,7 +9,7 @@ import threading
 LOGFORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 logging.basicConfig(level=logging.INFO, format=LOGFORMAT)
 
-namespace = "chaosbutton"
+namespace = "vshn-chaosbutton"
 selector = "app=static-go"
 channel = 15  # pin 15 on the header, pin 17 next to it is 3.3v
 maxparallel = 15 # maximum number of parallel killing threads
