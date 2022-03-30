@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO, format=LOGFORMAT)
 namespace = "vshn-chaosbutton"
 selector = "app=static-go"
 channel = 15  # pin 15 on the header, pin 17 next to it is 3.3v
-maxparallel = 15 # maximum number of parallel killing threads
+maxparallel = 15  # maximum number of parallel killing threads
 
 # Configs can be set in Configuration class directly or using helper utility
 config.load_kube_config()
@@ -27,9 +27,7 @@ def chaos(channel):
     #                          pod.spec.node_name))
     podname = random.choice(pods.items).metadata.name
     logging.info("killing {0}".format(podname))
-    api.delete_namespaced_pod(
-        podname, namespace, client.V1DeleteOptions(grace_period_seconds=0)
-    )
+    api.delete_namespaced_pod(podname, namespace)
 
 
 def newthread(channel):
