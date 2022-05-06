@@ -16,7 +16,7 @@ google-auth==2.6.6
     # via kubernetes
 idna==3.3
     # via requests
-kubernetes==23.3.0
+kubernetes==23.6.0
     # via -r requirements.in
 oauthlib==3.2.0
     # via requests-oauthlib
