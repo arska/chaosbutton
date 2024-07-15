@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements.in
 #
-cachetools==5.3.3
+cachetools==5.4.0
     # via google-auth
 certifi==2023.11.17
     # via
