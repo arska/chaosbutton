@@ -20,7 +20,7 @@ kubernetes==28.1.0
     # via -r requirements.in
 oauthlib==3.2.2
     # via requests-oauthlib
-pyasn1==0.6.0
+pyasn1==0.6.1
     # via
     #   pyasn1-modules
     #   rsa
