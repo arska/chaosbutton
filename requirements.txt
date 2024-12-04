@@ -40,7 +40,7 @@ rpi.gpio==0.7.1
     # via -r requirements.in
 rsa==4.9
     # via google-auth
-six==1.16.0
+six==1.17.0
     # via
     #   google-auth
     #   kubernetes
