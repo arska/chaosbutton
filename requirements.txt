@@ -38,7 +38,7 @@ requests-oauthlib==1.4.1
     # via kubernetes
 rpi.gpio==0.7.1
     # via -r requirements.in
-rsa==4.9
+rsa==4.9.1
     # via google-auth
 six==1.17.0
     # via
