@@ -34,7 +34,7 @@ requests==2.32.5
     # via
     #   kubernetes
     #   requests-oauthlib
-requests-oauthlib==1.4.1
+requests-oauthlib==2.0.0
     # via kubernetes
 rpi.gpio==0.7.1
     # via -r requirements.in
