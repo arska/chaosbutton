@@ -28,7 +28,7 @@ pyasn1-modules==0.4.2
     # via google-auth
 python-dateutil==2.9.0.post0
     # via kubernetes
-pyyaml==6.0.3
+pyyaml==6.0.4
     # via kubernetes
 requests==2.34.2
     # via
